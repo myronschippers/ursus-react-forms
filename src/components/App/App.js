@@ -42,7 +42,9 @@ class App extends Component {
 
     this.setState({
       user: {
-        ...this.state.enteredUser,
+        name: this.state.enteredName,
+        age: this.state.enteredAge,
+        city: this.state.enteredCity,
       }
     });
   }
