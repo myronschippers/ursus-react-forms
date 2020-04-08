@@ -4,16 +4,9 @@ import './App.css'
 
 class App extends Component {
   state = {
-    // change to mirror user structure
-    enteredUser: {
-      name: '',
-      age: '',
-      city: '',
-    },
-    // enteredName: '',
-    // enteredAge: '',
-    // enteredCity: '',
-
+    enteredName: '',
+    enteredAge: '',
+    enteredCity: '',
     // saved user information
     user: {
       name: '',
@@ -22,51 +15,24 @@ class App extends Component {
     }
   }
 
-  // changeName = (event) => {
-  //   console.log('Entered NAME');
-  //   this.setState({
-  //     enteredUser: {
-  //       // what are current values ??
-  //       ...this.state.enteredUser, // represents current / previous state
-  //       name: event.target.value
-  //     }
-  //   });
-  // }
-
-  // changeAge = (event) => {
-  //   console.log('Entered AGE');
-  //   this.setState({
-  //     enteredUser: {
-  //       // what are current values ??
-  //       ...this.state.enteredUser,
-  //       age: event.target.value
-  //     }
-  //   });
-  // }
-
-  // changeCity = (event) => {
-  //   console.log('Entered CITY');
-  //   this.setState({
-  //     enteredUser: {
-  //       // what are current values ??
-  //       ...this.state.enteredUser,
-  //       city: event.target.value
-  //     }
-  //   });
-  // }
-
-  changeUser = (event, propertyKey) => {
-    // propertyKey
-    // 'name'
-    // 'age'
-    // 'city'
-    console.log('Entered USER');
+  changeName = (event) => {
+    console.log('Entered NAME');
     this.setState({
-      enteredUser: {
-        // what are current values ??
-        ...this.state.enteredUser,
-        [propertyKey]: event.target.value
-      }
+      name: event.target.value
+    });
+  }
+
+  changeAge = (event) => {
+    console.log('Entered AGE');
+    this.setState({
+      age: event.target.value
+    });
+  }
+
+  changeCity = (event) => {
+    console.log('Entered CITY');
+    this.setState({
+      city: event.target.value
     });
   }
 
@@ -88,12 +54,6 @@ class App extends Component {
         Currently living in {this.state.user.city}
       </p>
     );
-    const enteredMessage = (
-      <p>
-        {this.state.enteredUser.name} is {this.state.enteredUser.age} years old.
-        Currently living in {this.state.enteredUser.city}
-      </p>
-    );
 
     if (!this.state.user.name || !this.state.user.age) {
       userMessage = null;
@@ -112,28 +72,27 @@ class App extends Component {
             placeholder="Name..."
             name="name"
             required
-            onChange={(event) => this.changeUser(event, 'name')}
+            onChange={this.changeName}
           />
           <input
             type="number"
             placeholder="Age..."
             name="age"
             required
-            onChange={(event) => this.changeUser(event, 'age')}
+            onChange={this.changeAge}
           />
           <input
             type="text"
             placeholder="City..."
             name="city"
             required
-            onChange={(event) => this.changeUser(event, 'city')}
+            onChange={this.changeCity}
           />
 
           <button>Submit</button>
         </form>
 
         <div className="container">
-          {enteredMessage}
           {/* this.state.user.name !== '' && userMessage */}
           {userMessage}
         </div>
